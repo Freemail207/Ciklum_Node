@@ -1,30 +1,19 @@
 let Koa = require('koa');
 let Router = require('koa-router');
+let KoaBodyparser = require('koa-bodyparser');
 
 let app = new Koa();
 let router = new Router();
-
+//TODO sigterm
+//TODO bodyparser
+app.use(KoaBodyparser());
 router
     .get('/', (ctx, next) => {
         console.log(ctx)
         ctx.body = 'Hello World';
     })
     .post('/users', async (ctx, next) => {
-        let arr = [];
-
-        await new Promise((resolve, reject) => {
-            ctx.req.on('data', (data) => {
-                arr.push(data);
-            })
-
-            ctx.req.on('end', () => {
-                console.log(arr)
-                console.log(JSON.parse(arr))
-                ctx.body = JSON.parse(arr)
-                resolve();
-            })
-        })
-
+        ctx.body = ctx.request.body;
     })
 
 app
