@@ -4,7 +4,6 @@ let KoaBodyparser = require('koa-bodyparser');
 
 let app = new Koa();
 let router = new Router();
-//TODO sigterm
 app.use(KoaBodyparser());
 router
     .get('/', (ctx, next) => {
@@ -20,7 +19,7 @@ app
 
 process.stdin.resume();
 
-process.on('SIGINT', () => {
+process.on('SIGTERM', () => {
     console.log('Received SIGINT. Press Control-Z to exit.');
 });
 

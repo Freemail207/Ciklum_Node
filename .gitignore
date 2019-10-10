@@ -1,6 +1,7 @@
 # OSX
 #
 .DS_Store
+./ide
 
 # Xcode
 #
@@ -26,7 +27,7 @@ project.xcworkspace
 #
 build/
 dist/
-.idea
+.idea/
 .gradle
 local.properties
 *.iml
